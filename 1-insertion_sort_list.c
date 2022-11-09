@@ -5,7 +5,7 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-listint_t *current, *swap, *prv;
+	listint_t *current, *swap, *prv;
 if (!list || !*list)
 return;
 current = *list;
@@ -25,6 +25,7 @@ prv->next = swap->next;
 swap->prev = prv->prev;
 swap->next = prv;
 prv->prev = swap;
+print_list(*list);
 }
 }
 }
