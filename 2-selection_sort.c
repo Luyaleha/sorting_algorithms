@@ -1,28 +1,40 @@
 #include "sort.h"
 /**
- * selection_sort - sorts an array of integers in ascending order
- * @array: element to be sorted
- * @size: size of array
+ * swap - swaps two numbers
+ * @num1: first number
+ * @num2: second number
+ */
+void swap(int *num1, int *num2)
+{
+	int tmp;
+tmp = *num1;
+	*num1 = *num2;
+	*num2 =  tmp;
+}
+/**
+ * selection_sort - sorts an array in ascending order
+ * by selects the smallest element from an unsorted list
+ * in each iteration and places that element at the beginning
+ * of the unsorted list
+ *
+ * @array: array of integer
+ * @size: number of elements in @array
  */
 void selection_sort(int *array, size_t size)
 {
-unsigned int i, j;
-if (size < 2)
-return;
-for (i = 0; i < size; i++)
+size_t i, j, min;
+for (i = 0; i < size - 1; i++)
 {
-unsigned int x = i;
-int aux = array[i];
+min = i;
 for (j = i + 1; j < size; j++)
 {
-if (array[j] < aux)
-aux = array[j], x = j;
+if (array[j] < array[min])
+min = j;
 }
-if (x != i)
+if (min != i)
 {
-array[x] = array[i];
-array[i] = aux;
+swap(&array[min], &array[i]);
 print_array(array, size);
 }
 }
-
+}
